@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Happy Birthday Phương Anh 🎉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Sound Toggle Button -->
+    <button class="sound-toggle" id="sound-toggle" onclick="toggleSound()">
+        <svg class="sound-icon" id="sound-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+        <svg class="sound-icon hidden" id="sound-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+    </button>
+
+    <!-- Rotate Screen Overlay -->
+    <div class="rotate-overlay" id="rotate-overlay">
+        <div class="rotate-content">
+            <div class="phone-icon">
+                <div class="phone-body">
+                    <div class="phone-screen"></div>
+                </div>
+            </div>
+            <div class="rotate-arrow">↻</div>
+            <p class="rotate-text">Vui lòng xoay ngang màn hình</p>
+            <p class="rotate-subtext">Please rotate your device to landscape mode</p>
+        </div>
+    </div>
+
+    <!-- Background Animation -->
+    <canvas id="matrixCanvas"></canvas>
+    <div class="balloons-container" id="balloons-container"></div>
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Countdown Section -->
+        <section class="countdown-section active" id="countdown-section">
+            <div class="countdown-number" id="countdown-number">3</div>
+        </section>
+
+        <!-- Intro Animation Section -->
+        <section class="intro-section" id="intro-section">
+            <div class="intro-text" id="intro-text"></div>
+        </section>
+
+        <!-- Welcome Section -->
+        <section class="welcome-section" id="welcome-section">
+            <div class="welcome-gif-container">
+                <img src="HappyBirthdayGIF.gif" alt="Happy Birthday" class="birthday-gif">
+                <button class="btn-primary btn-start" onclick="startCelebration()">
+                    🎁 Bắt Đầu Nào! 🎁
+                </button>
+            </div>
+        </section>
+
+        <!-- Birthday Message Section - Flip Book -->
+        <section class="message-section" id="message-section">
+            <div class="book-container-wrapper">
+                <input type="checkbox" id="cover_checkbox">
+                <input type="checkbox" id="page1_checkbox">
+                <input type="checkbox" id="page2_checkbox">
+                <input type="checkbox" id="page3_checkbox">
+                <input type="checkbox" id="page4_checkbox">
+                <input type="checkbox" id="page5_checkbox">
+                <p style="text-align: center; color: #4ecdc4; font-size: 14px;">
+                    💡 Nhấn vào bìa để mở sách, nhấn vào trang để lật tiếp
+                </p>
+                <!-- Flip Book -->
+                <div id="flip_book">
+                    <div class="front_cover">
+                        <label for="cover_checkbox" id="cover"></label>
+                    </div>
+
+                    <div class="page" id="page1">
+                        <div class="front_page">
+                            <label for="page1_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/front_page_edge_shading.webp"
+                                alt="Front page edge shading">
+                            <img class="front_content" src="./image1.jpg" alt="Photo 1">
+                        </div>
+
+                        <div class="back_page">
+                            <label for="page1_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/back_page_edge_shading.webp"
+                                alt="Back page edge shading">
+                            <img class="back_content" src="./image2.jpg" alt="Photo 2">
+                        </div>
+                    </div>
+
+                    <div class="page" id="page2">
+                        <div class="front_page">
+                            <label for="page2_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/front_page_edge_shading.webp"
+                                alt="Front page edge shading">
+                            <img class="front_content" src="./image3.jpg" alt="Photo 3">
+                        </div>
+
+                        <div class="back_page">
+                            <label for="page2_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/back_page_edge_shading.webp"
+                                alt="Back page edge shading">
+                            <img class="back_content" src="./image4.jpg" alt="Photo 4">
+                        </div>
+                    </div>
+
+                    <div class="page" id="page3">
+                        <div class="front_page">
+                            <label for="page3_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/front_page_edge_shading.webp"
+                                alt="Front page edge shading">
+                            <img class="front_content" src="./image5.jpg" alt="Photo 5">
+                        </div>
+
+                        <div class="back_page">
+                            <label for="page3_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/back_page_edge_shading.webp"
+                                alt="Back page edge shading">
+                            <img class="back_content" src="./image6.jpg" alt="Photo 6">
+                        </div>
+                    </div>
+
+                    <div class="page" id="page4">
+                        <div class="front_page">
+                            <label for="page4_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/front_page_edge_shading.webp"
+                                alt="Front page edge shading">
+                            <img class="front_content" src="./image7.jpg" alt="Photo 7">
+                        </div>
+
+                        <div class="back_page">
+                            <label for="page4_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/back_page_edge_shading.webp"
+                                alt="Back page edge shading">
+                            <img class="back_content" src="./image8.jpg" alt="Photo 8">
+                        </div>
+                    </div>
+
+                    <div class="page" id="page5">
+                        <div class="front_page">
+                            <label for="page5_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/front_page_edge_shading.webp"
+                                alt="Front page edge shading">
+                            <img class="front_content" src="./image9.jpg" alt="Photo 9">
+                        </div>
+
+                        <div class="back_page">
+                            <label for="page5_checkbox"></label>
+                            <img class="edge_shading" src="./web-flip_book/assets/images/back_page_edge_shading.webp"
+                                alt="Back page edge shading">
+                            <img class="back_content" src="./image10.jpg" alt="Photo 10">
+                        </div>
+                    </div>
+
+                    <div class="back_cover"></div>
+                </div>
+
+
+
+                <button class="btn-secondary" onclick="showWishes()" style="margin-top: 20px;">
+                    💌 Tiếp Tục
+                </button>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section (Hidden) -->
+        <section class="gallery-section" id="gallery-section" style="display: none;">
+        </section>
+
+        <!-- Birthday Wishes Section -->
+        <section class="wishes-section" id="wishes-section">
+            <div class="card">
+                <h2>💌</h2>
+                <div class="typewriter-container">
+                    <p class="typewriter-text" id="wish1"></p>
+                    <p class="typewriter-text" id="wish2"></p>
+                    <p class="typewriter-text" id="wish3"></p>
+                    <p class="typewriter-text" id="wish4"></p>
+                    <p class="typewriter-text" id="wish5"></p>
+                </div>
+                <button class="btn-secondary hidden" id="wishes-continue-btn" onclick="showVideo()">
+                    🎬 Xem Video
+                </button>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section" id="video-section">
+            <div class="card">
+                <h2>🎬 Video Dành Riêng Cho Bạn</h2>
+                <div class="video-container">
+                    <video id="hppdVideo" controls controlsList="nodownload" playsinline>
+                        <source src="hppdVideo.mp4" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video.
+                    </video>
+                </div>
+                <button class="btn-primary" onclick="restart()">
+                    🔄 Xem Lại Từ Đầu
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Background Video Audio -->
+    <video id="bgVideo" loop playsinline>
+        <source src="OIIAOIIAVIDEO.mp4" type="video/mp4">
+    </video>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
